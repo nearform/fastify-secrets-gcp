@@ -1,0 +1,26 @@
+{
+  "name": "fastify-secrets-gcp",
+  "version": "0.0.1",
+  "description": "Fastify secrets plugin for Google cloud platform secrets manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearform/fastify-secrets-gcp.git"
+  },
+  "author": "NearForm Ltd",
+  "license": "Apache-2.0",
+  "keywords": [
+    "fastify",
+    "secrets"
+  ],
+  "bugs": {
+    "url": "https://github.com/nearform/fastify-secrets-gcp/issues"
+  },
+  "homepage": "https://github.com/nearform/fastify-secrets-gcp#readme",
+  "engines": {
+    "node": ">= 12.13.0"
+  }
+}
