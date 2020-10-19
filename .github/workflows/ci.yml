@@ -21,7 +21,16 @@ jobs:
           key: node-modules-${{ hashFiles('package.json') }}
       - name: Install dependencies
         run: npm install
+      - name: Setup GCP access key
+        shell: bash
+        env:
+          GCP_KEY: ${{ secrets.GCP_KEY }}
+        run: |
+          echo $GCP_KEY > key.json
       - name: Lint
         run: npm run lint
       - name: Run Tests
+        env:
+          TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./key.json
         run: npm run test:ci
