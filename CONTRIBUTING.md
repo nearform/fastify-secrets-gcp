@@ -16,6 +16,14 @@ We would like to avoid issues that require a follow up questions to identify the
 
 ## For Developers
 
+All contributions should fit the linter, pass the tests and add new tests when new features are added.
+You can test this by running
+
+```
+npm run lint
+npm run test
+```
+
 ---
 
 <a id="developers-certificate-of-origin"></a>
