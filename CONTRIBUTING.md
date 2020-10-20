@@ -24,6 +24,16 @@ npm run lint
 npm run test
 ```
 
+In order to run the tests you will need access to a GCP Secret Manager instance. Refer to the `Local dev environment` section of the readment on how to set the environment up.
+
+Then run the tests with something like:
+
+```
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json TEST_PROJECT_ID=1234567890 npm run test
+```
+
+You may also export those variables (as they will be needed for `git push` as well)
+
 ---
 
 <a id="developers-certificate-of-origin"></a>
