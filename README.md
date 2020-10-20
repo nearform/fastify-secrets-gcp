@@ -1,5 +1,7 @@
 # Fastify Secrets Gcp
 
+![CI](https://github.com/nearform/fastify-secrets-gcp/workflows/CI/badge.svg)
+
 Fastify secrets plugin for Google cloud platform secrets manager
 
 ## Installation
