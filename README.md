@@ -10,29 +10,6 @@ npm install --save fastify-secrets-core
 
 ## Usage
 
-
-## Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md)
-
-## License
-
-Copyright NearForm Ltd 2020. Licensed under the [Apache-2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
-
-# Fastify Secrets (core)
-
-Simplify development of fastify-secrets plugins
-
-> This module is intended for developers implemeting fastify-secrets plugins, not for developers using fastify-plugin in their fastify projects
-
-## Installation
-
-```
-npm install --save fastify-secrets-core
-```
-
-## Usage
-
 ### Get permissions to access gcp secrets manager
 
 In order to be able to read from gcp secrets manager you will need some permissions.
