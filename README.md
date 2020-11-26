@@ -7,7 +7,7 @@ Fastify secrets plugin for Google cloud platform secrets manager
 ## Installation
 
 ```
-npm install --save fastify-secrets-core
+npm install --save fastify-secrets-gcp
 ```
 
 ## Usage
