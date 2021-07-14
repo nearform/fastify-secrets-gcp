@@ -1,0 +1,21 @@
+{
+  "name": "gs-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.19.1",
+    "fastify-auth0-verify": "^0.5.2",
+    "fastify-secrets-gcp": "^1.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
