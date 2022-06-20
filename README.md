@@ -1,6 +1,6 @@
 # Fastify Secrets Gcp
 
-![CI](https://github.com/nearform/fastify-secrets-gcp/workflows/CI/badge.svg)
+[![ci](https://github.com/nearform/fastify-secrets-gcp/actions/workflows/ci.yml/badge.svg)](https://github.com/nearform/fastify-secrets-gcp/actions/workflows/ci.yml)
 
 Fastify secrets plugin for Google cloud platform secrets manager
 
@@ -41,7 +41,6 @@ In any case you will need to grant the "Secret Manager Secret Accessor" role.
 ### Add plugin to your fastify instance
 
 ```js
-
 const FastifySecrets = require('fastify-secrets-gcp')
 
 fastify.register(FastifySecrets, {
@@ -49,17 +48,14 @@ fastify.register(FastifySecrets, {
     dbPassword: 'projects/PROJECT-ID/secrets/SECRET-ID/versions/latest'
   }
 })
-
 ```
 
 ### Access you secrets
 
 ```js
-
 await fastify.ready()
 
 console.log(fastify.secrets.dbPassword) // content of projects/PROJECT-ID/secrets/SECRET-ID/versions/latest
-
 ```
 
 ### Plugin options
