@@ -1,11 +1,15 @@
 name: ci
-on: [push, pull_request]
+on:
+  - push
+  - pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14, 16]
+        node-version:
+          - 14
+          - 16
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -25,14 +29,11 @@ jobs:
           TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
           GOOGLE_APPLICATION_CREDENTIALS: ./key.json
         run: npm run test:ci
-
   automerge:
     needs: build
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-      contents: write    
+      contents: write
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
-        with:
-          github-token: ${{secrets.github_token}}
