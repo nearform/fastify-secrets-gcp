@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     strategy:
       matrix:
         node-version:
@@ -19,18 +22,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - name: Setup GCP access key
-        shell: bash
-        env:
-          GCP_KEY: ${{ secrets.GCP_KEY }}
-        run: |
-          echo $GCP_KEY > key.json
+      - name: 'Authenticate with GCP'
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
       - name: Lint
         run: npm run lint
       - name: Run Tests
         env:
-          TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
-          GOOGLE_APPLICATION_CREDENTIALS: ./key.json
+          TEST_PROJECT_ID: ${{ vars.TEST_PROJECT_ID }}
         run: npm run test:ci
   automerge:
     needs: build
