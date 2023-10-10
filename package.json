@@ -1,6 +1,6 @@
 {
   "name": "fastify-secrets-gcp",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Fastify secrets plugin for Google cloud platform secrets manager",
   "main": "lib/fastify-secrets-gcp.js",
   "scripts": {
