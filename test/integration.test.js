@@ -1,6 +1,7 @@
 'use strict'
 
-const { test, teardown } = require('tap')
+const { test, after } = require('node:test')
+
 const uuid = require('uuid')
 const Fastify = require('fastify')
 const SecretManagerServiceClient = require('@google-cloud/secret-manager').SecretManagerServiceClient
@@ -34,15 +35,13 @@ async function createSecret() {
   })
 }
 
-teardown(async function deleteSecret() {
+after(function deleteSecret() {
   return client.deleteSecret({
     name: SECRET_NAME
   })
 })
 
 test('integration', async (t) => {
-  t.plan(1)
-
   await createSecret()
 
   const fastify = Fastify({
@@ -57,11 +56,5 @@ test('integration', async (t) => {
 
   await fastify.ready()
 
-  t.has(
-    fastify.secrets,
-    {
-      test: SECRET_CONTENT
-    },
-    'decorates fastify with secret content'
-  )
+  t.assert.deepStrictEqual(fastify.secrets.test, SECRET_CONTENT, 'decorates fastify with secret content')
 })
