@@ -31,7 +31,7 @@ jobs:
       - name: Run Tests
         env:
           TEST_PROJECT_ID: ${{ vars.TEST_PROJECT_ID }}
-        run: npm run test:ci
+        run: npm run test
   automerge:
     needs: build
     runs-on: ubuntu-latest
