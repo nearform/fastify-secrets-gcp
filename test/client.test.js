@@ -1,6 +1,7 @@
 'use strict'
 
-const { test, beforeEach } = require('tap')
+const { test, beforeEach, describe } = require('node:test')
+
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
@@ -16,17 +17,13 @@ const GcpClient = proxyquire('../lib/client', {
   }
 })
 
-beforeEach(async () => {
+beforeEach(() => {
   accessSecretVersion.resetHistory()
   accessSecretVersion.resetBehavior()
 })
 
-test('get', (t) => {
-  t.plan(2)
-
-  t.test('happy path', async (t) => {
-    t.plan(3)
-
+describe('get', (t) => {
+  test('happy path', async (t) => {
     const client = new GcpClient()
     accessSecretVersion.resolves([
       {
@@ -38,24 +35,23 @@ test('get', (t) => {
 
     const secret = await client.get('projects/project-id/secrets/secret-key/versions/latest')
 
-    t.ok(accessSecretVersion.called, 'calls accessSecretVersion')
-    t.ok(
+    t.assert.ok(accessSecretVersion.called, 'calls accessSecretVersion')
+    t.assert.ok(
       accessSecretVersion.calledWith({
         name: 'projects/project-id/secrets/secret-key/versions/latest'
       }),
       'provides ref as name to accessSecretVersion'
     )
-    t.equal(secret, 'secret payload', 'converts payload.data to sting')
+    t.assert.equal(secret, 'secret payload', 'converts payload.data to sting')
   })
 
-  t.test('sdk error', async (t) => {
-    t.plan(1)
+  test('sdk error', async (t) => {
     const client = new GcpClient()
 
     accessSecretVersion.rejects(new Error())
 
     const promise = client.get('projects/project-id/secrets/secret-key/versions/latest')
 
-    await t.rejects(promise, 'throws error')
+    await t.assert.rejects(promise, 'throws error')
   })
 })
