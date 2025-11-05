@@ -22,7 +22,7 @@ beforeEach(() => {
   accessSecretVersion.resetBehavior()
 })
 
-describe('get', (t) => {
+describe('get', () => {
   test('happy path', async (t) => {
     const client = new GcpClient()
     accessSecretVersion.resolves([
