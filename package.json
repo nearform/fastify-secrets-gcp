@@ -53,7 +53,7 @@
     }
   },
   "dependencies": {
-    "@google-cloud/secret-manager": "^6.0.1",
+    "@google-cloud/secret-manager": "^7.0.0",
     "fastify-secrets-core": "^4.0.0"
   }
 }
